@@ -1,73 +1,58 @@
-# React + TypeScript + Vite
+Flowva Rewards Hub - Technical Assessment
+A high-fidelity recreation of the Flowva Rewards Hub dashboard, built with React, TypeScript, Tailwind CSS, and Supabase.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Demo
+[Insert your Vercel/Netlify URL here]
 
-Currently, two official plugins are available:
+Tech Stack
+Frontend: React 18 with TypeScript
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Styling: Tailwind CSS (Custom configuration for Flowva design system)
 
-## React Compiler
+Backend/Database: Supabase (Auth & PostgreSQL)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Icons: Lucide React
 
-## Expanding the ESLint configuration
+Setup Instructions
+1. Prerequisites
+Node.js (v18 or higher)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+A Supabase account
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+2. Environment Variables
+Create a .env file in the root directory and add your Supabase credentials:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Code snippet
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+3. Database Setup
+Run the following SQL in your Supabase SQL Editor to create the necessary table:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+SQL
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+CREATE TABLE user_points (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  user_id UUID REFERENCES auth.users NOT NULL,
+  points INTEGER DEFAULT 5,
+  referrals INTEGER DEFAULT 0,
+  daily_streak INTEGER DEFAULT 1,
+  last_check_in TIMESTAMPTZ,
+  referral_code TEXT UNIQUE,
+  created_at TIMESTAMPTZ DEFAULT now()
+);
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+-- Enable Row Level Security
+ALTER TABLE user_points ENABLE ROW LEVEL SECURITY;
+
+-- Create Policy (Users can only see/update their own data)
+CREATE POLICY "Users can manage their own points" ON user_points
+  FOR ALL USING (auth.uid() = user_id);
+4. Installation
+Bash
+
+# Install dependencies
+npm install
+
+# Run the development server
+npm run dev

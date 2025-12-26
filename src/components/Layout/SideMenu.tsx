@@ -31,7 +31,7 @@ export const SideMenu: React.FC<{
   ];
 
   return (
-    <div className="hidden md:flex flex-col w-64 bg-white border-r h-screen sticky top-0">
+    <div className="hidden md:flex flex-col w-64 bg-white border-r border-gray-100 h-screen sticky top-0">
       <div className="p-6 flex items-center gap-2">
         <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold">
           f
@@ -54,7 +54,7 @@ export const SideMenu: React.FC<{
         ))}
       </nav>
 
-      <div className="p-4 border-t">
+      <div className="p-4 border-t border-gray-100">
         <div className="flex items-center gap-3 p-2">
           <div className="w-10 h-10 bg-pink-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
             B

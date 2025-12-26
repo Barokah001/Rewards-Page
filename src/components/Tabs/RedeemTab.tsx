@@ -70,7 +70,7 @@ export const RedeemTab: React.FC = () => {
         ).map((reward) => (
           <div
             key={reward.id}
-            className="bg-white border rounded-2xl p-6 flex flex-col items-center text-center shadow-sm"
+            className="bg-white  rounded-2xl p-6 flex flex-col items-center text-center shadow-sm"
           >
             <div className="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center text-3xl mb-4">
               {reward.title.includes("Bank")
