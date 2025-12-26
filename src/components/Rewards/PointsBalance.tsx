@@ -8,7 +8,7 @@ export const PointsBalance: React.FC<{ userPoints: UserPoints }> = ({
   const progress = (userPoints.points / target) * 100;
 
   return (
-    <div className="bg-[#F8F7FF] rounded-[24px] p-8 relative overflow-hidden shadow-sm border border-purple-50">
+    <div className="bg-[#F8F7FF] rounded-[24px] p-10 shadow-sm transition-transform duration-300 hover:scale-[1.02] cursor-default">
       <div className="flex items-center gap-2 mb-6">
         <div className="bg-purple-600 p-1.5 rounded-lg">
           <span className="text-white text-xs">🏆</span>

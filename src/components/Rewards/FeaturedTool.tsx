@@ -3,7 +3,6 @@ import React from "react";
 export const FeaturedTool: React.FC = () => {
   return (
     <div className="bg-gradient-to-br from-[#7C3AED] to-[#3B82F6] rounded-[32px] p-8 text-white relative shadow-xl overflow-hidden mt-8">
-      {/* Background Decorative Shapes */}
       <div className="absolute top-0 right-0 p-4 opacity-20">
         <div className="grid grid-cols-2 gap-2">
           <div className="w-8 h-8 rounded-full bg-white" />
