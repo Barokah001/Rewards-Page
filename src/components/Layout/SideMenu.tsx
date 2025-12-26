@@ -11,7 +11,6 @@ import {
   X,
 } from "lucide-react";
 
-// Updated Interface to include mobile controls
 interface SideMenuProps {
   isOpen: boolean;
   onClose: () => void;
@@ -20,11 +19,11 @@ interface SideMenuProps {
   activePath: string;
 }
 
-export const SideMenu: React.FC<SideMenuProps> = ({ 
-  isOpen, 
-  onClose, 
-  userEmail, 
-  onSignOut 
+export const SideMenu: React.FC<SideMenuProps> = ({
+  isOpen,
+  onClose,
+  userEmail,
+  onSignOut,
 }) => {
   const menuItems = [
     { name: "Home", icon: <Home size={20} />, path: "/" },
@@ -43,7 +42,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({
 
   return (
     <>
-      {/* 1. Mobile Overlay (Dark background when menu is open) */}
+      {/* 1. Mobile Overlay */}
       <div
         className={`fixed inset-0 bg-black/40 z-40 transition-opacity duration-300 md:hidden ${
           isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
@@ -51,10 +50,10 @@ export const SideMenu: React.FC<SideMenuProps> = ({
         onClick={onClose}
       />
 
-      {/* 2. Sidebar Container */}
+      
       <div
         className={`fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-100 h-screen transition-transform duration-300 ease-in-out transform 
-        md:relative md:translate-x-0 sticky top-0 ${
+        md:relative md:translate-x-0 md:sticky md:top-0 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } flex flex-col`}
       >
@@ -66,8 +65,11 @@ export const SideMenu: React.FC<SideMenuProps> = ({
             </div>
             <span className="text-xl font-bold text-purple-900">Flowva</span>
           </div>
-          {/* Close Button (Mobile Only) */}
-          <button onClick={onClose} className="md:hidden p-1 text-gray-500 hover:bg-gray-100 rounded-lg">
+          
+          <button
+            onClick={onClose}
+            className="md:hidden p-1 text-gray-500 hover:bg-gray-100 rounded-lg"
+          >
             <X size={24} />
           </button>
         </div>
@@ -89,7 +91,7 @@ export const SideMenu: React.FC<SideMenuProps> = ({
         </nav>
 
         {/* User Profile & Sign Out */}
-        <div className="p-4 border-t border-gray-100">
+        <div className="p-4 border-t border-gray-100 bg-white">
           <div className="flex items-center gap-3 p-2">
             <div className="w-10 h-10 bg-pink-500 rounded-full flex items-center justify-center text-white font-bold text-sm">
               B

@@ -39,7 +39,7 @@ const App: React.FC = () => {
   if (!user) return <AuthForm onAuthSuccess={checkUser} />;
 
   return (
-    <div className="flex min-h-screen bg-white font-sans text-gray-900">
+    <div className="flex min-h-screen bg-white font-sans text-gray-900 overflow-x-hidden">
       <SideMenu
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}
@@ -48,22 +48,22 @@ const App: React.FC = () => {
         onSignOut={signOut}
       />
 
-      <main className="flex-1 p-6 md:p-10 max-w-7xl mx-auto w-full">
-        {/* Mobile Header: Visible only on small screens */}
-        <div className="md:hidden flex justify-between items-center mb-8">
+      <main className="flex-1 w-full min-w-0 p-4 md:p-10 max-w-7xl mx-auto">
+        {/* Mobile Header: Fixed alignment */}
+        <div className="md:hidden flex items-center justify-between mb-8 px-2 w-full">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+              f
+            </div>
+            <span className="text-xl font-bold text-purple-900">Flowva</span>
+          </div>
+
           <button
             onClick={() => setIsMenuOpen(true)}
-            className="p-2 -ml-2 text-gray-600 hover:bg-gray-100 rounded-lg"
+            className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
           >
             <Menu size={28} />
           </button>
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center text-white text-[10px] font-bold">
-              f
-            </div>
-            <span className="text-lg font-bold text-purple-600">Flowva</span>
-          </div>
-          <div className="w-10" />
         </div>
 
         {/* Desktop Header */}
