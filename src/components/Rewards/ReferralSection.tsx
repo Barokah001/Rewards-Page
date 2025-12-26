@@ -11,7 +11,7 @@ export const ReferralSection: React.FC<ReferralSectionProps> = ({
   onCopyLink,
 }) => {
   return (
-    <div className="bg-white rounded-lg p-6 shadow">
+    <div className="bg-white rounded-[24px] p-8 shadow-sm mt-8">
       <h3 className="font-bold text-lg mb-4 border-l-4 border-purple-600 pl-3">
         Refer & Earn
       </h3>
