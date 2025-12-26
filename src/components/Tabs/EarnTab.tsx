@@ -2,7 +2,7 @@ import React from "react";
 import { PointsBalance } from "../Rewards/PointsBalance";
 import { DailyStreak } from "../Rewards/DailyStreak";
 import { FeaturedTool } from "../Rewards/FeaturedTool";
-import { UserPoints } from "../../types";
+import { type UserPoints } from "../../types";
 
 interface EarnTabProps {
   userPoints: UserPoints;

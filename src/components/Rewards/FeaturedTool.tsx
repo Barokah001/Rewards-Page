@@ -2,7 +2,7 @@ import React from "react";
 
 export const FeaturedTool: React.FC = () => {
   return (
-    <div className="bg-gradient-to-br from-[#7C3AED] to-[#3B82F6] rounded-[32px] p-8 text-white relative shadow-xl overflow-hidden mt-8">
+    <div className="bg-gradient-to-br from-[#7C3AED] to-[#3B82F6] rounded-[24px] p-6 text-white relative shadow-xl flex flex-col justify-between transition-transform duration-300 hover:scale-[1.02]">
       <div className="absolute top-0 right-0 p-4 opacity-20">
         <div className="grid grid-cols-2 gap-2">
           <div className="w-8 h-8 rounded-full bg-white" />
@@ -31,11 +31,11 @@ export const FeaturedTool: React.FC = () => {
               Free to try — earn Flowva Points when you sign up!
             </p>
 
-            <div className="flex flex-wrap gap-3">
-              <button className="bg-purple-600 text-white px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-purple-700 transition">
+            <div className="flex flex-col gap-2">
+              <button className="w-full bg-white text-purple-600 py-2.5 rounded-xl font-bold text-xs hover:bg-gray-100 transition">
                 👤 Sign up
               </button>
-              <button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2.5 rounded-xl text-sm font-bold hover:opacity-90 transition">
+              <button className="w-full bg-gradient-to-r from-[#D946EF] to-[#EC4899] text-white py-2.5 rounded-xl font-bold text-xs hover:opacity-90 transition">
                 🎁 Claim 50 pts
               </button>
             </div>
