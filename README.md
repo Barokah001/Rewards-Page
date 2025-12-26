@@ -56,3 +56,30 @@ npm install
 
 # Run the development server
 npm run dev
+
+Assumptions & Trade-offs
+1. Architecture Choice: Component-Based Structure
+Assumption: The project needs to be scalable. Trade-off: Instead of a single large file, I organized the UI into a modular structure (Layout, Rewards, Tabs, Hooks). This adds slightly more complexity initially but makes the code significantly more readable and maintainable for a team.
+
+2. State Management: Custom Hooks
+Assumption: Local state and Supabase listeners are sufficient for this scope. Trade-off: I chose to use custom hooks (useAuth, useUserPoints) instead of Redux or Context API. This keeps the logic lightweight and avoids "over-engineering" while still separating the business logic from the UI.
+
+3. UI/UX: Design Fidelity vs. Performance
+Assumption: Pixel-perfect recreation of the provided screenshots was the priority. Trade-off: I used specific Tailwind arbitrary values (e.g., rounded-[24px]) to match the unique Flowva "soft" design language exactly, rather than sticking strictly to standard Tailwind utility classes.
+
+4. Security: Row Level Security (RLS)
+Assumption: Data integrity is paramount. Trade-off: All database queries are handled directly via the Supabase client. To ensure security without a custom backend, I assumed the implementation of Supabase RLS policies to prevent users from modifying points that don't belong to them.
+
+5. Data Handling: Loading & Empty States
+Assumption: The user might have a slow connection. Trade-off: I implemented explicit loading states for authentication and data fetching, ensuring the UI doesn't "flicker" or show empty data before the Supabase response is received.
+
+Features Implemented
+Full Authentication: Sign-up and Sign-in functionality.
+
+Daily Check-in Logic: Prevents multiple claims per day and tracks streaks.
+
+Responsive Dashboard: A sidebar-based layout that collapses gracefully for mobile users.
+
+Dynamic Reward Filtering: Tabs and pill-filters for navigating unlocked/locked rewards.
+
+Referral Logic: Automatic generation of unique referral codes for new users.
