@@ -2,32 +2,41 @@ import React from "react";
 
 export const FeaturedTool: React.FC = () => {
   return (
-    <div className="bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg p-6 mb-4 shadow text-white">
-      <span className="bg-white bg-opacity-30 px-3 py-1 rounded-full text-sm">
+    <div className="bg-gradient-to-br from-[#7C3AED] to-[#3B82F6] rounded-[32px] p-8 text-white relative shadow-xl overflow-hidden mt-8">
+      {/* Background Decorative Shapes */}
+      <div className="absolute top-0 right-0 p-4 opacity-20">
+        <div className="grid grid-cols-2 gap-2">
+          <div className="w-8 h-8 rounded-full bg-white" />
+          <div className="w-8 h-8 rounded-lg bg-white" />
+          <div className="w-8 h-8 transform rotate-45 bg-white" />
+        </div>
+      </div>
+
+      <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm uppercase tracking-wider">
         Featured
       </span>
-      <h2 className="text-2xl font-bold mt-2 mb-4">
-        Top Tool Spotlight
-        <br />
-        Reclaim
-      </h2>
-      <div className="bg-white text-gray-800 rounded-lg p-4 mt-4">
-        <div className="flex items-start gap-3">
-          <span className="text-3xl">📅</span>
+
+      <h2 className="text-3xl font-black mt-4 mb-2">Top Tool Spotlight</h2>
+      <h3 className="text-2xl font-bold opacity-90 mb-6">Reclaim</h3>
+
+      <div className="bg-white rounded-[24px] p-6 text-gray-800 shadow-inner">
+        <div className="flex gap-4">
+          <div className="bg-purple-50 p-3 rounded-xl h-fit">📅</div>
           <div>
-            <h3 className="font-bold mb-2">
+            <h4 className="font-bold text-lg mb-2 leading-tight">
               Automate and Optimize Your Schedule
-            </h3>
-            <p className="text-sm text-gray-600 mb-4">
+            </h4>
+            <p className="text-sm text-gray-500 leading-relaxed mb-6">
               Reclaim.ai is an AI-powered calendar assistant that automatically
               schedules your tasks, meetings, and breaks to boost productivity.
               Free to try — earn Flowva Points when you sign up!
             </p>
-            <div className="flex gap-2">
-              <button className="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-purple-700">
+
+            <div className="flex flex-wrap gap-3">
+              <button className="bg-purple-600 text-white px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-purple-700 transition">
                 👤 Sign up
               </button>
-              <button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-lg text-sm font-semibold">
+              <button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2.5 rounded-xl text-sm font-bold hover:opacity-90 transition">
                 🎁 Claim 50 pts
               </button>
             </div>

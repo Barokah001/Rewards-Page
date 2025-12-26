@@ -1,7 +1,7 @@
 import React from "react";
-import { DailyCheckIn } from "../Rewards/DailyCheckIn";
+import { PointsBalance } from "../Rewards/PointsBalance";
+import { DailyStreak } from "../Rewards/DailyStreak";
 import { FeaturedTool } from "../Rewards/FeaturedTool";
-import { ReferralSection } from "../Rewards/ReferralSection";
 import { type UserPoints } from "../../types";
 
 interface EarnTabProps {
@@ -15,13 +15,24 @@ export const EarnTab: React.FC<EarnTabProps> = ({
   userPoints,
   isCheckedIn,
   onCheckIn,
-  onCopyLink,
 }) => {
   return (
-    <>
-      <DailyCheckIn isCheckedIn={isCheckedIn} onCheckIn={onCheckIn} />
+    <div className="space-y-8">
+      <h2 className="text-2xl font-bold text-gray-800 border-l-4 border-purple-600 pl-4">
+        Your Rewards Journey
+      </h2>
+
+      {/* Grid for Points and Streak */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <PointsBalance userPoints={userPoints} />
+        <DailyStreak
+          userPoints={userPoints}
+          isCheckedIn={isCheckedIn}
+          onCheckIn={onCheckIn}
+        />
+      </div>
+
       <FeaturedTool />
-      <ReferralSection userPoints={userPoints} onCopyLink={onCopyLink} />
-    </>
+    </div>
   );
 };

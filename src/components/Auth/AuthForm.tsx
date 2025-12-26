@@ -15,14 +15,19 @@ export const AuthForm: React.FC<AuthFormProps> = ({ onAuthSuccess }) => {
       if (isSignUp) {
         const { error } = await supabase.auth.signUp({ email, password });
         if (error) throw error;
-        alert('Check your email for verification link!');
+        alert("Check your email for verification link!");
       } else {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        const { error } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
         if (error) throw error;
         onAuthSuccess();
       }
-    } catch (error: any) {
-      alert(error.message);
+    } catch (error) {
+      const message =
+        error instanceof Error ? error.message : "An unexpected error occurred";
+      alert(message);
     }
   };
 
