@@ -1,9 +1,14 @@
-import React from 'react';
-import { type UserPoints } from '../../types';
+import React from "react";
+import { type UserPoints } from "../../types";
 
-export const DailyStreak: React.FC<{ userPoints: UserPoints; isCheckedIn: boolean; onCheckIn: () => void }> = ({ userPoints, isCheckedIn, onCheckIn }) => {
-  const days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
-  const todayIndex = 4; 
+export const DailyStreak: React.FC<{
+  userPoints: UserPoints;
+  isCheckedIn: boolean;
+  onCheckIn: () => void;
+}> = ({ userPoints, isCheckedIn, onCheckIn }) => {
+  
+  const days = ["S", "M", "T", "W", "T", "F", "S"];
+  const todayIndex = new Date().getDay();
 
   return (
     <div className="bg-[#F0F9FF] rounded-[24px] p-10 shadow-sm transition-transform duration-300 hover:scale-[1.02] cursor-default">
@@ -24,7 +29,7 @@ export const DailyStreak: React.FC<{ userPoints: UserPoints; isCheckedIn: boolea
               className={`w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm transition-all
               ${
                 i === todayIndex
-                  ? "ring-2 ring-purple-600 text-purple-600"
+                  ? "ring-2 ring-purple-600 text-purple-600 bg-white shadow-sm"
                   : "bg-gray-100 text-gray-400"
               }`}
             >
@@ -42,7 +47,11 @@ export const DailyStreak: React.FC<{ userPoints: UserPoints; isCheckedIn: boolea
         onClick={onCheckIn}
         disabled={isCheckedIn}
         className={`w-full py-4 rounded-2xl font-bold text-white transition shadow-lg flex items-center justify-center gap-2
-          ${isCheckedIn ? "bg-gray-300" : "bg-[#8B5CF6] hover:bg-[#7C3AED]"}`}
+          ${
+            isCheckedIn
+              ? "bg-gray-300 cursor-not-allowed"
+              : "bg-[#8B5CF6] hover:bg-[#7C3AED]"
+          }`}
       >
         ⚡ {isCheckedIn ? "Claimed Today" : "Claim Today's Points"}
       </button>
